@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>socket.IO Example</title>
+	</head>
+	<body>
+		<h1>Socket.IO Example</h1>
+		<h2>How many users are here?</h2>
+		<p id="count"></p>
+		<script type="text/javascript" src="http://www.w3school.com.cn/jquery/jquery-1.11.1.min.js" ></script>
+		<script src="/socket.io/socket.io.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var socket = io.connect('/');
+			var count = $('#count');
+			socket.on('users',function (data) {
+				console.log('Got updata from the server');
+				console.log('There are '+ data.number + 'users');
+				count.text(data.number);
+			});
+		</script>
+	</body>
+</html>

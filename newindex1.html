@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>socket.IO Example</title>
+	</head>
+	<body>
+		<h1>Socket.IO Example</h1>
+		<h2>How many users are here?</h2>
+		<form id="message-form" action="#">
+			<textarea id="message" rows="4" cols="30"></textarea>
+			<input type="submit"  value="Send Message"/>
+		</form>
+		<script type="text/javascript" src="http://www.w3school.com.cn/jquery/jquery-1.11.1.min.js" ></script>
+		<script src="/socket.io/socket.io.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var socket = io.connect('/');
+			$("#message-form").submit(function () {
+				socket.emit('message',{text:$('#message').val()});
+				$('#message').val('');
+				return false;
+			});
+			socket.on('push message',function (data) {
+				$("#message-form").after('<p>'+data.text+'</p>');
+			});
+		</script>
+	</body>
+</html>

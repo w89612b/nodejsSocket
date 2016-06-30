@@ -1,0 +1,9 @@
+{
+	"name":"nodeSocket",
+	"version":"1.0.0",
+  	"description": "nodejs+socket.io 简单例子编写",
+	"private":true,
+	"dependencies":{
+		"socket.io":"1.4.5"
+	}
+}
